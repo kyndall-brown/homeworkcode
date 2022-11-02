@@ -1,7 +1,8 @@
 # FRED Inflation Data:
 this readme has all the variable definitions for the three csv files
 
-## National Inflation Data: (i think i should get the annual version, sry)
+## National Inflation Data: 
+(i think i should get the annual version, sry)
 
 FRED Graph Observations	
 Federal Reserve Economic Data	
