@@ -1,8 +1,7 @@
 # FRED Inflation Data:
 this readme has all the variable definitions for the three csv files
 
-## National Inflation Data: 
-(i think i should get the annual version, sry)
+## National Inflation Data: Annual Version
 
 FRED Graph Observations	
 Federal Reserve Economic Data	
@@ -11,17 +10,17 @@ Help: https://fredhelp.stlouisfed.org
 Economic Research Division	
 Federal Reserve Bank of St. Louis	
 	
-CPALTT01USM657N_PC1	Consumer Price Index: Total All Items for the United States, Percent Change from Year Ago, Monthly, Not Seasonally Adjusted
+CPALTT01USM657N	Consumer Price Index: Total All Items for the United States, Growth rate previous period, Annual, Not Seasonally Adjusted
 
-CORESTICKM159SFRBATL_PCH	Sticky Price Consumer Price Index less Food and Energy, Percent Change, Monthly, Seasonally Adjusted
+CORESTICKM159SFRBATL	Sticky Price Consumer Price Index less Food and Energy, Percent Change from Year Ago, Annual, Seasonally Adjusted
 
-CPILFESL_PCH	Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average, Percent Change, Monthly, Seasonally Adjusted
+CPILFESL_PCH	Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average, Percent Change, Annual, Seasonally Adjusted
 
-PCEPI_PCH	Personal Consumption Expenditures: Chain-type Price Index, Percent Change, Monthly, Seasonally Adjusted
+PCEPI_PCH	Personal Consumption Expenditures: Chain-type Price Index, Percent Change, Annual, Seasonally Adjusted
 
-CPIAUCSL_PCH	Consumer Price Index for All Urban Consumers: All Items in U.S. City Average, Percent Change, Monthly, Seasonally Adjusted
+CPIAUCSL_PCH	Consumer Price Index for All Urban Consumers: All Items in U.S. City Average, Percent Change, Annual, Seasonally Adjusted
 	
-Frequency: Monthly	
+Frequency: Annual		
 
 
 ## Per Capita Personal Income by States information:
