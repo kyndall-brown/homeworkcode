@@ -1,5 +1,8 @@
 # FRED Inflation Data:
 this readme has all the variable definitions for the three csv files
+updated! now with Year over Year changes for all of the state and MSA variables!
+The suffix _YOY after the variable indicates the percent change year over year, 
+so we don't have to calculate it :)
 
 ## National Inflation Data: Annual Version
 
