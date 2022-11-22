@@ -11,17 +11,20 @@ msadf <- read.csv("https://raw.githubusercontent.com/kyndall-brown/homeworkcode/
 statedf <- read.csv("https://raw.githubusercontent.com/kyndall-brown/homeworkcode/main/inflationdata/per-capita-personal-income-states.csv")
 
 # data cleaning
+msadf[msadf == "#DIV/0!"] <- NA
+statedf[statedf == "#DIV/0!"] <- NA
 dmy(usdf$observation_date)
 ymd(statedf$observation_date)
+# drop states observations with no matching national inflation #s
 statedf <- statedf %>%
   filter(ymd(observation_date) >= dmy(usdf$observation_date[[1]]))
 
 # create empty dataframe for the 50 states
 statesmapdf <- data.frame(
-  observation_date = c(""),
-  state_name = c(""),
-  personal_income = c(""),
-  personal_yoy = c("")
+  observation_date = character(),
+  state_name = character(),
+  personal_income = character(),
+  personal_yoy = character()
 )
 # fill dataframe by iterating through list of states
 for (i in 1:50) {
@@ -37,6 +40,8 @@ for (i in 1:50) {
   # bind them onto the bottom of statesmapdf
   statesmapdf <- rbind(statesmapdf, tempdf)
 }
+
+
 
 
 
