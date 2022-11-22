@@ -1,12 +1,20 @@
 # final project - map of inflation across the U.S. States
-library(dplyr)
-# import the data
+library(tidyverse)
+library(lubridate)
+
+# import the data: it's all from FRED
 # national inflation data
 usdf <- read.csv("https://raw.githubusercontent.com/kyndall-brown/homeworkcode/main/inflationdata/national-inflation-data.csv")
 # metropolitan statistical area personal income data
 msadf <- read.csv("https://raw.githubusercontent.com/kyndall-brown/homeworkcode/main/inflationdata/per-capita-personal-income-msa.csv")
 # state personal income data
 statedf <- read.csv("https://raw.githubusercontent.com/kyndall-brown/homeworkcode/main/inflationdata/per-capita-personal-income-states.csv")
+
+# data cleaning
+dmy(usdf$observation_date)
+ymd(statedf$observation_date)
+statedf <- statedf %>%
+  filter(ymd(observation_date) >= dmy(usdf$observation_date[[1]]))
 
 # create empty dataframe for the 50 states
 statesmapdf <- data.frame(
@@ -29,6 +37,7 @@ for (i in 1:50) {
   # bind them onto the bottom of statesmapdf
   statesmapdf <- rbind(statesmapdf, tempdf)
 }
+
 
 
 
