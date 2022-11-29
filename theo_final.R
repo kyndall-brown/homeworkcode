@@ -13,13 +13,6 @@ library(xts)
 library(vars)
 library(aTSA)
 
-# compare time series for fit
-# arima, sarima and var
-# using our national inflation and state personal income data
-# test for fit and simplicity
-# how well they forecast
-# may do states, but focus on country if we cant do states
-
 key <- "f00943b4cc68f3867f1762517ed4d467"
 
 fredr_set_key(key)
@@ -91,6 +84,13 @@ plot(cbind(dCPI,dU,dY,dR))
 
 ###########  theos project   ###########
 
+# compare time series for fit
+# arima, sarima and var
+# using our national inflation and state personal income data
+# test for fit and simplicity
+# how well they forecast
+# may do states, but focus on country if we cant do states
+
 ## import inflation and price data
 library(tidyverse)
 library(lubridate)
@@ -143,23 +143,35 @@ for (i in 1:50) {
 }
 
 ########## creating time series ##########
+# for states
 for (i in 2:51) {
-  statedf[i] <- xts(x = statedf[i], 
-                    order.by = statedf$observation_date)
+  statedf[i] <- ts(data = statedf[i])
+}
+# for country level variables
+for (i in 2:ncol(usdf)) {
+  usdf[i] <- ts(data = usdf[i])
 }
 
 ########## testing for stationarity ##########
-test_output_states <- data.frame (
-  state_name = rep(c(""),each=50),
-  adf_output = rep(c(""),each=50)
-)
+# for just Texas
+adf.test(statedf$TXPCPI)
+# pvalues all very close to 1, fail to reject hypothesis
 
-for (i in 1:50) {
-  test_output_states$state_name = state.name[i]
-  test_output_states$adf_output = adf.test(statedf[[i+1]])
-}
+acf_tx <- acf(statedf$TXPCPI, lag.max = 12, plot=FALSE)
+plot(acf_tx)
 
-adf.test(statedf[[5]])
+pacf_tx <- pacf(statedf$TXPCPI)
+
+p = ggplot()
+p = p + geom_line(data = subset(statesmapdf, 
+                                state_name == "Texas", 
+                                select = c("observation_date", 
+                                           "state_name", 
+                                           "personal_income")), 
+                  aes(x = observation_date, 
+                      y = personal_income)) + xlab("Year") + ylab("Per Capita Personal Income") +
+    ggtitle("Income Growth in Texas, 1948 to 2021") + theme_bw()
+p
 
 
 # Set up the sample
